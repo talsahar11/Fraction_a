@@ -5,23 +5,26 @@ namespace ariel {
     class Fraction {
     private:
         int numerator, denominator;
-        float value;
 
-        int findGCD(int numerator, int denominator) {
+        static int findGCD(int numerator, int denominator) {
             return 0;
         }
 
-        Fraction reduce_form(Fraction fraction) {
+        static Fraction reduce_form(const Fraction& fraction) {
             return Fraction(0, 0);
         }
 
     public:
         explicit Fraction(int numerator = 0, int denominator = 0): numerator(numerator), denominator(denominator) {}
-        Fraction(Fraction& f) {}
-        int getNumerator(){
+        Fraction(Fraction& f): numerator(f.numerator), denominator(f.denominator) {}
+        Fraction(Fraction&& f) = default ;
+        Fraction& operator=(const Fraction& f) = default ;
+        Fraction& operator=(Fraction&& f) = default ;
+        ~Fraction() = default ;
+        static int getNumerator(){
             return 0 ;
         }
-        int getDenominator(){
+        static int getDenominator(){
             return 0 ;
         }
 
